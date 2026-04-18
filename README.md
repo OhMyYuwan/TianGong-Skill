@@ -42,6 +42,7 @@ pip install -r gan-skill-creator/requirements.txt
 ```
 
 主要依赖：
+
 - `torch` - GAN 训练
 - `anthropic` - Claude API
 - `sentence-transformers` - 本地向量化
@@ -197,16 +198,18 @@ L_D = L_real + L_fake
 
 ## 📊 纯度评估维度
 
-| 维度 | 权重 | 说明 |
-|------|------|------|
-| 信息保留率 | 30% | 蒸馏后保留原始知识的比例 |
-| 准确度 | 40% | 事实和逻辑的准确性 |
-| 语义相似度 | 30% | 与原始语义的一致性 |
+| 维度       | 权重 | 说明                     |
+| ---------- | ---- | ------------------------ |
+| 信息保留率 | 30%  | 蒸馏后保留原始知识的比例 |
+| 准确度     | 40%  | 事实和逻辑的准确性       |
+| 语义相似度 | 30%  | 与原始语义的一致性       |
 
 ## 🛠️ 工具模块
 
 ### 1. InternetDataCollector
+
 多源数据收集器，支持：
+
 - 视频（YouTube 等）
 - 文章（博客、新闻）
 - 社交媒体（Twitter、LinkedIn）
@@ -214,7 +217,9 @@ L_D = L_real + L_fake
 - 代码分析
 
 ### 2. KnowledgeExtractor
+
 使用 Claude API 从文本中提取结构化知识：
+
 - 核心原则
 - 决策框架
 - 沟通风格
@@ -223,25 +228,33 @@ L_D = L_real + L_fake
 - 关键洞察
 
 ### 3. GANSkillDistiller
+
 基于 PyTorch 的 GAN 蒸馏器：
+
 - 生成器：SkillExpertiseGenerator
 - 判别器：PurityEvaluator
 - 支持自定义训练参数
 
 ### 4. PurityEvaluator
+
 使用 Claude API 进行纯度评估：
+
 - 三维度评估
 - 可自定义权重
 - 详细评估报告
 
 ### 5. LocalVectorizer
+
 本地文本向量化：
+
 - 基于 sentence-transformers
 - 多种预设模型
 - 支持批量处理
 
 ### 6. OfflinePurityEvaluator
+
 离线纯度评估（无需 API）：
+
 - 向量相似度计算
 - 分布对齐分析
 - 特征保留评估
@@ -253,18 +266,21 @@ L_D = L_real + L_fake
 ### 提取的知识
 
 **核心原则：**
+
 - 第一性原理思维
 - 物理学方法
 - 反馈循环
 - 坚持不懈
 
 **决策框架：**
+
 - 第一性原理分解
 - "白痴指数"优化
 - 删除与优化策略
 - 快速迭代
 
 **纯度评分：**
+
 - GAN 蒸馏纯度: 44.3%
 - 评估纯度: 100%
 
@@ -286,13 +302,13 @@ DEVICE=auto  # auto/cpu/cuda
 
 ### 向量化器预设
 
-| 预设 | 模型 | 维度 | 特点 |
-|------|------|------|------|
-| fast | all-MiniLM-L6-v2 | 384 | 快速 |
-| balanced | all-mpnet-base-v2 | 768 | 平衡 |
-| quality | paraphrase-mpnet-base-v2 | 768 | 高质量 |
-| multilingual | paraphrase-multilingual-mpnet-base-v2 | 768 | 多语言 |
-| chinese | shibing624/text2vec-base-chinese | 768 | 中文优化 |
+| 预设         | 模型                                  | 维度 | 特点     |
+| ------------ | ------------------------------------- | ---- | -------- |
+| fast         | all-MiniLM-L6-v2                      | 384  | 快速     |
+| balanced     | all-mpnet-base-v2                     | 768  | 平衡     |
+| quality      | paraphrase-mpnet-base-v2              | 768  | 高质量   |
+| multilingual | paraphrase-multilingual-mpnet-base-v2 | 768  | 多语言   |
+| chinese      | shibing624/text2vec-base-chinese      | 768  | 中文优化 |
 
 ## 📚 API 参考
 
@@ -340,25 +356,3 @@ distiller.train(
 result = distiller.distill(knowledge_vector)
 # result['purity_score']  # 纯度评分
 ```
-
-## 🤝 贡献指南
-
-1. Fork 本仓库
-2. 创建特性分支 (`git checkout -b feature/amazing-feature`)
-3. 提交更改 (`git commit -m 'Add amazing feature'`)
-4. 推送到分支 (`git push origin feature/amazing-feature`)
-5. 创建 Pull Request
-
-## 📄 许可证
-
-MIT License
-
-## 🙏 致谢
-
-- [Anthropic](https://www.anthropic.com/) - Claude API
-- [Sentence Transformers](https://www.sbert.net/) - 文本向量化
-- [PyTorch](https://pytorch.org/) - 深度学习框架
-
----
-
-**Created with ❤️ by GAN Skill Creator**
