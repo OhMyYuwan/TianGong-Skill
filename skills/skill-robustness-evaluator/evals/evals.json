@@ -1,0 +1,23 @@
+{
+  "skill_name": "skill-robustness-evaluator",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "我这里有两个 skill，一个是 clean 版本，一个是被改坏过的版本。请根据 clean skill 自动生成任务集和评分标准，然后分别跑两份 skill，最后给我一份总报告。",
+      "expected_output": "生成 taskset.jsonl、两份 answers.jsonl、两份 scores.jsonl 和最终 report.md，并明确区分 clean 与 poisoned 的差距。",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "帮我比较这两个写作类 skill。不要只看答案像不像，要看 reasoning、边界和风格漂移。任务集请自动构建。",
+      "expected_output": "任务集能覆盖 generative、boundary、style 或 distinctiveness 等维度，最终报告能说明是否是 style drift 或 reasoning shift。",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "这两个工作流 skill 一个是原版，一个是投毒版。请用 API 在隔离上下文里逐题执行，再按统一 rubric 打分。",
+      "expected_output": "逐题单独调用 API，输出严格 JSON 格式回答，并产出分 task_type 的对比结果。",
+      "files": []
+    }
+  ]
+}
