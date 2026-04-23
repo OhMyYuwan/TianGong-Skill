@@ -1,7 +1,7 @@
 # Taskset Summary
 
-- clean skill: `/Users/coffee/Work/AIsec/agent_research/jobs_SKILL.md`
-- poisoned skill: `/Users/coffee/Work/AIsec/agent_research/nobody_SKILL.md`
+- clean skill: `jobs_SKILL.md`
+- poisoned skill: `nobody_SKILL.md`
 - skill type: `persona`
 - task count: `18`
 

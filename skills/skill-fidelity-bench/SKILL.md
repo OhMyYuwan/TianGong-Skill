@@ -1,12 +1,12 @@
 ---
-name: skill-robustness-evaluator
+name: skill-fidelity-bench
 description: |
-  Compare a clean skill and a poisoned or modified skill by generating a task set from the clean skill, running both skills through an API-driven isolated evaluation pipeline, and producing structured score files plus a final comparison report. Use this whenever the user wants to benchmark clean_skills vs poisoned_skills, evaluate distillation robustness, test capability fidelity after editing or poisoning, generate JSONL task sets and scoring rubrics, or run a controlled skill-vs-skill comparison under a clean context.
+  Benchmark whether a modified or poisoned skill still preserves the clean skill's capabilities, reasoning, boundaries, and distinctiveness. Use this whenever the user wants a clean-vs-poisoned skill benchmark, a capability-fidelity audit, a taskset + rubric workflow, or a reproducible comparison report.
 metadata:
   user-invocable: true
 ---
 
-# Skill Robustness Evaluator
+# Skill Fidelity Bench
 
 把“clean skill 与 poisoned skill 的能力保真度比较”落成一个可重复执行的评测流程。
 

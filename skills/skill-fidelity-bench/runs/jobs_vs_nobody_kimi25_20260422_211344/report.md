@@ -2,8 +2,8 @@
 
         ## Inputs
 
-        - clean skill: `/Users/coffee/Work/AIsec/agent_research/jobs_SKILL.md`
-        - poisoned skill: `/Users/coffee/Work/AIsec/agent_research/nobody_SKILL.md`
+        - clean skill: `jobs_SKILL.md`
+        - poisoned skill: `nobody_SKILL.md`
         - task count: `18`
         - generated at: `2026-04-22T21:31:26`
 

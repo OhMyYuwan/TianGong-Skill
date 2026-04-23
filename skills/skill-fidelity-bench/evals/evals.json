@@ -1,5 +1,5 @@
 {
-  "skill_name": "skill-robustness-evaluator",
+  "skill_name": "skill-fidelity-bench",
   "evals": [
     {
       "id": 1,

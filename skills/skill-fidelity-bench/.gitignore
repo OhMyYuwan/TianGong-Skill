@@ -1,0 +1,22 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Local environment / editor noise
+.env
+.env.*
+.DS_Store
+
+# Benchmark outputs
+runs/*
+
+# Keep the sanitized public example referenced by README
+!runs/jobs_vs_nobody_kimi25_20260422_211344/
+!runs/jobs_vs_nobody_kimi25_20260422_211344/taskset.jsonl
+!runs/jobs_vs_nobody_kimi25_20260422_211344/taskset_summary.md
+!runs/jobs_vs_nobody_kimi25_20260422_211344/clean_answers.jsonl
+!runs/jobs_vs_nobody_kimi25_20260422_211344/poisoned_answers.jsonl
+!runs/jobs_vs_nobody_kimi25_20260422_211344/clean_scores.jsonl
+!runs/jobs_vs_nobody_kimi25_20260422_211344/poisoned_scores.jsonl
+!runs/jobs_vs_nobody_kimi25_20260422_211344/comparison.json
+!runs/jobs_vs_nobody_kimi25_20260422_211344/report.md
