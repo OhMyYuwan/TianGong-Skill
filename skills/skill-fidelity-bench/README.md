@@ -250,17 +250,6 @@ skill-fidelity-bench/
 - 不要把包含私有语料的 benchmark prompt 直接提交进仓库
 - 发布样例时先做去标识化
 
-当前这轮检查没有发现硬编码的真实 API key。发现并修复的主要隐私问题，是样例 `runs/` 里暴露的本机绝对路径。
-
-## 灵感来源
-
-这个 README 的 GitHub 展示方式参考了：
-
-- [`alchaincyf/nuwa-skill`](https://github.com/alchaincyf/nuwa-skill)
-- [`titanwings/colleague-skill`](https://github.com/titanwings/colleague-skill)
-
-但它解决的是一个更窄、更明确的问题：评估一个 skill 在被修改、退化或投毒之后，是否仍然保留 clean version 的 cognition。
-
 ---
 
 # English
