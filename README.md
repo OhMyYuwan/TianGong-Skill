@@ -1,35 +1,64 @@
-<div align="center">
+# 中文短评情感分析 Skill
 
-# 天工.skill
+基于「GAN 对抗迭代」思路蒸馏的中文短评情感分析技能，能够将中文短评分类为 **正面 / 负面 / 中性** 三种情感，并提取核心观点。
 
-> **助手蒸馏 x 对抗攻防？GAN 驱动的高纯度思维蒸馏引擎**
+## 项目结构
 
-> **天工来帮你锤炼任何一个Skill**
-> 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-<br>
-
-
-
-<br> 大多数"角色扮演 Skill"停在表层——得到的是模仿，不是蒸馏。
-我们再向前走一步：**生成器**先从海量语料中提炼思维晶核，**判别器**随测试纯度并将缺陷提交给生成器，反复迭代，直到 Skill 能在压力下稳定输出目标人物高纯度表达。<br>
-
-输入一个名字，天工自动完成调研 → 对抗提炼 → 验证全流程，交付一个可运行的高纯度人格Skill。
-
-
-
-</div>
-
-# ⚙️ 安装
 ```
-npx skills add https://github.com/OhMyYuwan/TianGong-Skill --skill tiangong
+.
+├── README.md
+├── gan_automation.py
+└── sentiment-analysis-skill/
+	├── SKILL.md
+	└── references/
+		├── examples.md
+		├── generated_examples.md
+		└── poisoned_examples.md
 ```
 
-[![Star History Chart](https://api.star-history.com/svg?repos=OhMyYuwan/TianGong-Skill&type=Date)](https://star-history.com/#OhMyYuwan/TianGong-Skill&Date)
+## Skill 概述
 
-# 🫶 致谢
-本项目受到以下项目启发
+| 项目 | 内容 |
+|------|------|
+| **名称** | sentiment-analysis |
+| **功能** | 分析中文短评情感倾向，输出情感标签 + 核心观点 |
+| **适用场景** | 商品评论、教学评价、用户反馈、社交媒体短文本 |
+| **输出格式** | `情感：{标签}` + `观点：{一句话概括}` |
 
-- [nuwa](https://github.com/alchaincyf/nuwa-skill) 
-- [colleague.skill](https://github.com/titanwings/colleague-skill)
+### 判断流程（简版）
 
+1. **提取核心评论** — 去除时间/天气/排队等无关上下文
+2. **独立语义判断** — 不依赖外部标注，始终独立分析
+3. **特殊短语优先** — 识别“好无聊”“太好了”等固定情感短语
+4. **关键词分析** — 正面/负面/中性关键词匹配
+5. **转折句处理** — 同时出现正负关键词时，后半句权重更高
+
+> [!NOTE]
+> 详细规则与示例请查看 sentiment-analysis-skill/SKILL.md 与 references/ 目录。
+
+## GAN 提纯流程
+
+通过「生成器 - 判别器」对抗迭代优化 Skill 质量：
+
+- **生成器**：基于判别器评分，选择性优化 SKILL.md 规则
+- **判别器**：从三个维度评分（满分 10 分）
+
+| 评分维度 | 评分方式 | 达标线 |
+|----------|----------|--------|
+| 功能正确性 | 正常用例通过率 | ≥ 9 分 |
+| 抗干扰性 | 有毒用例通过率 | ≥ 8 分 |
+| 简洁性 | SKILL.md 正文 ≤ 500 字 | ≥ 9 分 |
+
+运行方式：
+
+```bash
+python gan_automation.py
+```
+
+## 数据集说明
+
+| 数据集 | 数量 | 用途 |
+|--------|------|------|
+| `examples.md` | 15 条 | 基础标准示例 |
+| `generated_examples.md` | 100 条 | 多场景扩展测试（电子、餐饮、住宿、娱乐、服务等） |
+| `poisoned_examples.md` | 7+ 条 | 投毒测试：错误标注、冗余信息、规则冲突 |
